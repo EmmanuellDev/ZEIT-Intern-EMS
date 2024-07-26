@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const Dashboard = ({ user }) => {
   const [newUser, setNewUser] = useState({
@@ -17,6 +18,7 @@ const Dashboard = ({ user }) => {
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [editUser, setEditUser] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
     const users = JSON.parse(localStorage.getItem('users')) || [];
@@ -34,10 +36,8 @@ const Dashboard = ({ user }) => {
 
   const handleAddUser = (e) => {
     e.preventDefault();
-
     const users = JSON.parse(localStorage.getItem('users')) || [];
     const userExists = users.some(user => user.email === newUser.email);
-
     if (userExists) {
       setMessage('User with this email already exists.');
     } else {
@@ -74,7 +74,6 @@ const Dashboard = ({ user }) => {
 
   const handleUpdateUser = (e) => {
     e.preventDefault();
-
     const users = JSON.parse(localStorage.getItem('users')) || [];
     const updatedUsers = users.map(u => u.email === newUser.email ? { ...u, ...newUser } : u);
     localStorage.setItem('users', JSON.stringify(updatedUsers));
@@ -104,8 +103,7 @@ const Dashboard = ({ user }) => {
   };
 
   const handleAddJobClick = () => {
-    // Handle the Add New Job button click
-    alert('Add New Job button clicked');
+    navigate('/job-postings'); // Navigate to the Job Postings page
   };
 
   return (

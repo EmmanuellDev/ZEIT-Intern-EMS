@@ -13,7 +13,7 @@ const AdminLogin = ({ onLogin }) => {
     e.preventDefault();
 
     // Check admin credentials
-    if (email === 'c.management@gmail.com' && password === 'manager@company') {
+    if (email === 'c.m@gmail.com' && password === 'company') {
       const adminUser = {
         username: 'Company_Management',
         email: 'c.management@gmail.com',
