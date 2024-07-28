@@ -1,0 +1,80 @@
+.applicants-page-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.applicants-page-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.applicants-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.applicant-name-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #333;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    max-width: 200px; /* Add this line to limit the button width */
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Add ellipsis to overflow text */
+}
+
+.applicant-name-button:hover {
+    background-color: #555;
+}
+
+.applicant-details {
+    margin-top: 20px;
+}
+
+.applicant-details table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.applicant-details th,
+.applicant-details td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.applicant-details th {
+    background-color: #f2f2f2;
+}
+
+.applicant-details select {
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.applicant-details button {
+    padding: 5px 10px;
+    font-size: 14px;
+    color: white;
+    background-color: #333;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.applicant-details button:hover {
+    background-color: #555;
+}

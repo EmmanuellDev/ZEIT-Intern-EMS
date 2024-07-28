@@ -1,0 +1,104 @@
+/* General styles for the container */
+.home-page-container {
+    text-align: center;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align items at the top */
+    min-height: 100vh; /* Ensure the container takes up full viewport height */
+}
+
+/* Style for the section containing the login button */
+.login-section {
+    margin-bottom: 10px; /* Reduce space between login options and jobs table */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Style for the headings */
+.login-section h1 {
+    margin-top: 20px; /* Add a small gap at the top before the heading */
+    margin-bottom: 10px; /* Reduce the gap between the top two headings */
+}
+
+.login-section h2 {
+    margin-top: 0; /* Ensure there's no extra margin at the top */
+}
+
+/* Style for the buttons */
+.button, .apply-button {
+    width: 200px; /* Set your desired width */
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white; /* Ensure text color is white */
+    background-color: black; /* Ensure background is black */
+    border: 2px solid black; /* Ensure border is black */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+    margin: 10px 0; /* Margin for spacing between buttons */
+}
+
+/* Hover effect for buttons */
+.button:hover, .apply-button:hover {
+    color: black; /* Text color on hover */
+    background-color: white; /* Background color on hover */
+    border: 2px solid black; /* Border color on hover */
+}
+
+/* Container for login options */
+.login-options-container {
+    margin-top: 10px; /* Reduce space between login button and login options */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Style for the login options wrapper */
+.login-options-wrapper {
+    display: flex;
+    justify-content: center; /* Center the buttons horizontally */
+    gap: 10px; /* Space between buttons */
+    margin-bottom: 10px; /* Space below the row of buttons */
+}
+
+/* Section for available jobs */
+.jobs-section {
+    margin-top: 10px; /* Reduce space before the jobs table */
+}
+
+/* Style for the jobs table */
+.jobs-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Style for table headers and cells */
+.jobs-table th, .jobs-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+/* Background color for table headers */
+.jobs-table th {
+    background-color: #f4f4f4;
+}
+
+/* Heading and button section */
+.apply-section {
+    margin-top: 20px; /* Space above the section */
+    text-align: center; /* Center the text */
+}
+
+.apply-heading {
+    font-size: 18px; /* Heading font size */
+    color: black; /* Heading text color */
+    margin-bottom: 10px; /* Space below the heading */
+}

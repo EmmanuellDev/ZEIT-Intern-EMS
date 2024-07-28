@@ -1,0 +1,60 @@
+.form-container {
+    width: 100%;
+    max-width: 500px; /* Reduced width */
+    margin: 20px auto;
+    padding: 15px; /* Reduced padding */
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.employee-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 12px; /* Reduced margin */
+}
+
+label {
+    display: block;
+    margin-bottom: 4px; /* Reduced margin */
+    font-weight: bold;
+    font-size: 0.9em; /* Reduced font size */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 6px; /* Reduced padding */
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9em; /* Reduced font size */
+}
+
+input[type="file"] {
+    padding: 2px; /* Reduced padding */
+}
+
+textarea {
+    height: 80px; /* Reduced height */
+    resize: vertical;
+}
+
+.submit-button {
+    padding: 8px 16px; /* Reduced padding */
+    font-size: 0.9em; /* Reduced font size */
+    color: white;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}

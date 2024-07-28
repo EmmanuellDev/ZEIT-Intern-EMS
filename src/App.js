@@ -1,38 +1,44 @@
-// src/App.js
+// App.js
+
+
 // Dependencies
-   // npm install react-router-dom
-   // npm install @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome
-   // npm install react-google-recaptcha
+// npm install react-router-dom@latest
+// npm install firebase
+// npm install react-toastify
 
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './HomePage';
+import AdminLoginPage from './AdminLoginPage';
+import EmployeeLogin from './EmployeeLogin';
+import AdminDashboard from './AdminDashboard';
+import EmployeeDashboard from './EmployeeDashboard';
+import AddEmployee from './AddEmployee';
+import ContactPage from './ContactPage';
+import EditEmployee from './EditEmployee';
+import ApplicantsPage from './ApplicantsPage';
+import JobPostingPage from './JobPostingPage';
+import JobDeletePage from './JobDeletePage';
 
-   import React from 'react';
-   import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-   import Dashboard from './components/Dashboard';
-   import AdminLogin from './components/AdminLogin';
-   import EmployeeLogin from './components/EmployeeLogin';
-   import Home from './components/Home';
-   import JobPostings from './components/JobPostings'; // Import the new component
-   
-   function App() {
-     const [loggedInUser, setLoggedInUser] = React.useState(null);
-   
-     return (
-       <Router>
-         <div>
-           <nav>
-             <Link to="/">Home</Link>
-           </nav>
-           <Routes>
-             <Route path="/" element={<Home />} />
-             <Route path="/admin-login" element={<AdminLogin onLogin={setLoggedInUser} />} />
-             <Route path="/employee-login" element={<EmployeeLogin onLogin={setLoggedInUser} />} />
-             <Route path="/dashboard" element={<Dashboard user={loggedInUser} />} />
-             <Route path="/job-postings" element={<JobPostings />} /> {/* Add the new route */}
-           </Routes>
-         </div>
-       </Router>
-     );
-   }
-   
-   export default App;
-   
+const App = () => {
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/admin-login" element={<AdminLoginPage />} />
+                <Route path="/employee-login" element={<EmployeeLogin />} />
+                <Route path="/admin-dashboard" element={<AdminDashboard />} />
+                <Route path="/employee-dashboard" element={<EmployeeDashboard />} />
+                <Route path="/edit-employee/:id" element={<EditEmployee />} />
+                <Route path="/add-employee" element={<AddEmployee />} />
+                <Route path="/contact-page" element={<ContactPage />} />
+                <Route path="/applicants" element={<ApplicantsPage />} />
+                <Route path="/post-job" element={<JobPostingPage />} />
+                <Route path="/job-delete" element={<JobDeletePage />} />
+            </Routes>
+        </Router>
+    );
+};
+
+export default App;
+

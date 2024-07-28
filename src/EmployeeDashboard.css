@@ -1,0 +1,63 @@
+.employee-dashboard-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 0 20px; /* Ensure some padding on the sides */
+    position: relative; /* Position relative to contain the welcome message */
+}
+
+.welcome-message {
+    position: absolute;
+    top: 40px; /* Adjusted top position to move it down */
+    left: 10px;
+    font-size: 24px; /* Increased font size */
+    font-weight: bold; /* Bold font */
+    color: #333;
+}
+
+.employee-details-table {
+    width: 100%;
+    max-width: 600px; /* Ensure the table doesn't exceed this width */
+    margin: 20px auto;
+    border-collapse: collapse;
+    border: 2px solid #333;
+    padding: 10px; /* Add padding inside the table */
+    box-sizing: border-box; /* Ensure padding is included in the width calculation */
+}
+
+.employee-details-table th, .employee-details-table td {
+    border: 2px solid #333;
+    padding: 8px;
+}
+
+.employee-details-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+}
+
+.employee-details-table td {
+    text-align: left;
+}
+
+.logout-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #000000;
+    border: 2px solid #000000;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    max-width: 200px;
+}
+
+.logout-button:hover {
+    color: #000000;
+    background-color: #ffffff;
+    border: 2px solid #000000;
+}

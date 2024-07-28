@@ -1,0 +1,90 @@
+.employee-login-container {
+    max-width: 600px; /* Increase max-width to 600px for a larger frame */
+    margin: 50px auto; /* Center the container horizontally */
+    padding: 100px; /* Adjust padding as needed */
+    padding-top: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.employee-login-container h1 {
+    margin-bottom: 20px; /* Margin below the header */
+}
+
+.employee-login-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px; /* Margin between form fields */
+    text-align: left;
+    max-width: 600px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px; /* Margin below the label */
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px; /* Adjust padding inside the input fields */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.submit-button {
+    padding: 10px 20px; /* Adjust padding to your preference */
+    font-size: 16px; /* Font size */
+    color: #ffffff; /* Text color */
+    background-color: #000000; /* Background color */
+    border: 2px solid #000000; /* Border */
+    border-radius: 4px; /* Border radius */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%; /* Make button full width */
+}
+
+.submit-button:hover {
+    color: #000000; /* Text color on hover */
+    background-color: #ffffff; /* Background color on hover */
+    border: 2px solid #000000; /* Border color on hover */
+}
+
+
+.page-container {
+    position: relative; /* Required for positioning quote-container absolutely */
+    min-height: 100vh; /* Ensure container takes up at least the full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Push the quote-container to the bottom */
+}
+
+.quote-container {
+    padding: 20px; /* Padding for the quote container */
+    font-style: italic;
+    font-size: 18px; /* Font size for the quote */
+    color: #555; /* Text color */
+    text-align: center; /* Center text */
+    max-width: 600px; /* Adjust width as needed */
+    border: 1px solid #ddd; /* Border for visibility */
+    background-color: #f9f9f9; /* Background color */
+    margin: 0 auto; /* Center horizontally */
+}
+
+.quote-text {
+    font-weight: bold; /* Bold text */
+    margin: 0;
+}
+
+.quote-author {
+    font-size: 16px; /* Font size for the author's name */
+    font-weight: bold; /* Bold author's name */
+    margin-top: 10px; /* Margin above the author's name */
+    color: #555; /* Color */
+}
