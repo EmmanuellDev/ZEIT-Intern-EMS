@@ -1,6 +1,5 @@
-// ApplicantsPage.css
-
 .applicants-page-container {
+    position: relative; /* Added to position arrow button */
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
@@ -9,8 +8,14 @@
     background-color: #f9f9f9;
 }
 
-.applicants-page-container h1 {
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+}
+
+.applicants-page-container h1 {
     margin-bottom: 20px;
 }
 
@@ -38,7 +43,7 @@
 }
 
 .applicant-name-button:hover {
-    background-color: #555;
+    background-color: #ffffff;
 }
 
 .applicant-details {
@@ -86,8 +91,6 @@
     background-color: #555;
 }
 
-/* src/ApplicantsPage.css */
-
 .arrow-button {
     position: absolute;
     top: 20px; /* Adjust as needed */
@@ -102,15 +105,10 @@
     justify-content: center;
     cursor: pointer;
     text-align: center;
+    font-size: 20px; /* Adjust font size for arrow */
 }
 
 .arrow-button:hover {
     background-color: black; /* Background color on hover */
     color: white; /* Text color on hover */
-}
-
-.arrow-button svg {
-    width: 20px; /* Adjust arrow size */
-    height: 20px; /* Adjust arrow size */
-    fill: black; /* Arrow color */
 }

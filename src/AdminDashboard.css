@@ -6,12 +6,19 @@
     position: relative;
 }
 
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px; /* Adjust space between heading and content */
+}
+
 h1, h2, h3 {
     color: #333;
 }
 
 h1 {
-    margin-bottom: 40px; /* Adjust space between heading and content */
+    margin-bottom: 0;
 }
 
 .button-container {
@@ -162,4 +169,12 @@ h1 {
     max-width: 150px;
     text-align: left;
     text-decoration: none;
+}
+
+.search-bar {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-width: 200px;
 }

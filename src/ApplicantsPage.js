@@ -1,5 +1,3 @@
-// src/ApplicantsPage.js
-
 import React, { useState, useEffect } from 'react';
 import { db } from './firebase';
 import { collection, getDocs, doc, updateDoc } from 'firebase/firestore';
@@ -59,77 +57,71 @@ const ApplicantsPage = () => {
         <div className="applicants-page-container">
             <ToastContainer />
             <div className="arrow-button" onClick={() => navigate('/')}>
-            &#8592;
+                &#8592;
             </div>
-            <h1>Applicants</h1>
-            <div className="applicants-list">
+            <div className="content-wrapper">
+                <h1>Applicants</h1>
+                <div className="applicants-list">
+                    {applicants.map((applicant) => (
+                        <button
+                            key={applicant.id}
+                            className="applicant-name-button"
+                            onClick={() => handleApplicantClick(applicant.id, applicant.status)}
+                        >
+                            {applicant.firstName}
+                        </button>
+                    ))}
+                </div>
                 {applicants.map((applicant) => (
-                    <button
-                        key={applicant.id}
-                        className="applicant-name-button"
-                        onClick={() => handleApplicantClick(applicant.id, applicant.status)}
-                    >
-                        {applicant.firstName}
-                    </button>
+                    selectedApplicantId === applicant.id && (
+                        <div key={applicant.id} className="applicant-details">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <th>First Name</th>
+                                        <td>{applicant.firstName}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Last Name</th>
+                                        <td>{applicant.lastName}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Email</th>
+                                        <td>{applicant.email}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Contact Number</th>
+                                        <td>{applicant.contactNumber}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Job</th>
+                                        <td>{applicant.job}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Status</th>
+                                        <td>
+                                            {isAdmin ? (
+                                                <div className="status-edit-container">
+                                                    <select value={status} onChange={(e) => setStatus(e.target.value)}>
+                                                        <option value="in-progress">In-progress</option>
+                                                        <option value="accepted">Accepted</option>
+                                                        <option value="rejected">Rejected</option>
+                                                    </select>
+                                                    <button onClick={() => handleStatusChange(applicant.id)}>
+                                                        Update Status
+                                                    </button>
+                                                </div>
+                                            ) : (
+                                                <span>{status}</span>
+                                            )}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    )
                 ))}
             </div>
-            {applicants.map((applicant) => (
-                selectedApplicantId === applicant.id && (
-                    <div key={applicant.id} className="applicant-details">
-                        <table>
-                            <tbody>
-                                <tr>
-                                    <th>First Name</th>
-                                    <td>{applicant.firstName}</td>
-                                </tr>
-                                <tr>
-                                    <th>Last Name</th>
-                                    <td>{applicant.lastName}</td>
-                                </tr>
-                                <tr>
-                                    <th>Email</th>
-                                    <td>{applicant.email}</td>
-                                </tr>
-                                <tr>
-                                    <th>Contact Number</th>
-                                    <td>{applicant.contactNumber}</td>
-                                </tr>
-                                <tr>
-                                    <th>Job</th>
-                                    <td>{applicant.job}</td>
-                                </tr>
-                                <tr>
-                                    <th>Resume</th>
-                                    <td>
-                                        <a href={applicant.resume} target="_blank" rel="noopener noreferrer">
-                                            View Resume
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>Status</th>
-                                    <td>
-                                        {isAdmin ? (
-                                            <div className="status-edit-container">
-                                                <select value={status} onChange={(e) => setStatus(e.target.value)}>
-                                                    <option value="in-progress">In-progress</option>
-                                                    <option value="accepted">Accepted</option>
-                                                    <option value="rejected">Rejected</option>
-                                                </select>
-                                                <button onClick={() => handleStatusChange(applicant.id)}>
-                                                    Update Status
-                                                </button>
-                                            </div>
-                                        ) : (
-                                            <span>{status}</span>
-                                        )}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                )
-            ))}
         </div>
     );
 };

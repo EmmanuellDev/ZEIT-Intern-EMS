@@ -9,6 +9,7 @@ import './AdminDashboard.css';
 const AdminDashboard = () => {
     const [employees, setEmployees] = useState([]);
     const [selectedEmployee, setSelectedEmployee] = useState(null);
+    const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
         const unsubscribe = onSnapshot(collection(db, "employees"), (snapshot) => {
@@ -46,9 +47,22 @@ const AdminDashboard = () => {
         }
     };
 
+    const filteredEmployees = employees.filter(employee =>
+        employee.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <div className="admin-dashboard-container">
-            <h1>Welcome Admin!</h1>
+            <div className="header-container">
+                <h1>Welcome Admin!</h1>
+                <input
+                    type="text"
+                    placeholder="Search employees..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="search-bar"
+                />
+            </div>
             <div className="button-container">
                 <Link to="/add-employee">
                     <button className="action-button">Add New Employee</button>
@@ -59,7 +73,7 @@ const AdminDashboard = () => {
             </div>
             <h2>List of Employees</h2>
             <div className="employee-list">
-                {employees.map(employee => (
+                {filteredEmployees.map(employee => (
                     <button
                         key={employee.id}
                         className="employee-name-button"

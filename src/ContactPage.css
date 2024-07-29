@@ -35,15 +35,34 @@
 }
 
 .form-group textarea {
-    height: auto;
-    resize: vertical;
+    height: auto; /* Set height to auto to match the input field */
+    resize: vertical; /* Allows vertical resizing */
 }
 
+/* Apply Button Styling */
+.apply-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: black;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.apply-button:hover {
+    color: white;
+    background-color: black;
+    border: 2px solid white;
+}
+
+/* Send Message Button Styling */
 .submit-button {
     padding: 10px 20px;
     font-size: 16px;
     color: white;
-    background-color: rgb(0, 0, 0);
+    background-color: black;
     border: 2px solid black;
     border-radius: 4px;
     cursor: pointer;
@@ -56,6 +75,7 @@
     border: 2px solid black;
 }
 
+/* Additional Text Styling */
 .additional-text {
     margin-top: 20px;
     text-align: center;
@@ -63,6 +83,7 @@
     color: #333;
 }
 
+/* Click Here Button Styling */
 .click-here-button {
     margin-top: 10px;
     padding: 10px 20px;

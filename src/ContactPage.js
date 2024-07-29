@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { db, storage } from './firebase';
+import { db } from './firebase'; // Import Firestore
 import { collection, addDoc } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import './ContactPage.css';
 
 const ContactPage = () => {
@@ -11,50 +10,42 @@ const ContactPage = () => {
         lastName: '',
         email: '',
         contactNumber: '',
-        job: '',
-        resume: null
+        job: '' // Changed 'address' to 'job'
     });
 
     const navigate = useNavigate();
 
     const handleChange = (e) => {
-        const { name, value, type, files } = e.target;
+        const { name, value } = e.target;
         setFormData({
             ...formData,
-            [name]: type === 'file' ? files[0] : value
+            [name]: value
         });
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            // Upload resume file to Firebase Storage
-            const storageRef = ref(storage, `resumes/${formData.resume.name}`);
-            await uploadBytes(storageRef, formData.resume);
-            const resumeURL = await getDownloadURL(storageRef);
-
-            // Save application data to Firestore with status "in-progress"
-            await addDoc(collection(db, 'applications'), {
-                ...formData,
-                resume: resumeURL,
-                status: 'in-progress'
-            });
-
-            alert('Application submitted successfully!');
+            // Add form data to Firestore under the "applications" collection
+            const docRef = await addDoc(collection(db, 'applications'), formData);
+            console.log("Document written with ID: ", docRef.id);
+            alert('Message sent!');
+            // Optionally reset the form
             setFormData({
                 firstName: '',
                 lastName: '',
                 email: '',
                 contactNumber: '',
-                job: '',
-                resume: null
+                job: '' // Reset 'job'
             });
-
-            navigate('/applicants'); // Redirect to applicants page after submission
-        } catch (error) {
-            console.error('Error submitting application:', error);
-            alert('Error submitting application. Please try again.');
+        } catch (e) {
+            console.error("Error adding document: ", e);
+            alert('Failed to send message. Please try again.');
         }
+    };
+
+    const handleClickHere = () => {
+        navigate('/applicants', { state: { fromAdminDashboard: false } });
     };
 
     return (
@@ -106,7 +97,7 @@ const ContactPage = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="job">Job you are going to apply:</label>
+                    <label htmlFor="job">Job you want to apply:</label>
                     <textarea
                         id="job"
                         name="job"
@@ -115,25 +106,13 @@ const ContactPage = () => {
                         required
                     ></textarea>
                 </div>
-                <div className="form-group">
-                    <label htmlFor="resume">Resume (PDF only):</label>
-                    <input
-                        type="file"
-                        id="resume"
-                        name="resume"
-                        accept=".pdf"
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
                 <button type="submit" className="submit-button">Send Message</button>
             </form>
             <div className="additional-text">
                 <p>Want to see your competitors & the current status of your Application❔</p>
-                <button onClick={() => navigate('/applicants', { state: { fromAdminDashboard: false } })} className="click-here-button">
-    Click here ➡️
-</button>
-
+                <button onClick={handleClickHere} className="click-here-button">
+                    Click here ➡️
+                </button>
             </div>
         </div>
     );
