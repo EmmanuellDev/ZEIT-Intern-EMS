@@ -14,8 +14,13 @@ const AdminLoginPage = () => {
         navigate('/admin-dashboard'); // Redirect to admin dashboard on successful login
     };
 
+    const handleBack = () => {
+        navigate('/'); // Navigate to homepage
+    };
+
     return (
         <div className="page-container">
+            <button className="back-button" onClick={handleBack}>⬅️</button>
             <div className="admin-login-container">
                 <h1>Admin Login</h1>
                 <form onSubmit={handleLogin} className="admin-login-form">

@@ -1,3 +1,5 @@
+// ApplicantsPage.css
+
 .applicants-page-container {
     max-width: 800px;
     margin: 0 auto;
@@ -29,10 +31,10 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    max-width: 200px; /* Add this line to limit the button width */
-    white-space: nowrap; /* Prevent text wrapping */
-    overflow: hidden; /* Hide overflow text */
-    text-overflow: ellipsis; /* Add ellipsis to overflow text */
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .applicant-name-button:hover {
@@ -59,6 +61,11 @@
     background-color: #f2f2f2;
 }
 
+.status-edit-container {
+    display: flex;
+    align-items: center;
+}
+
 .applicant-details select {
     padding: 5px;
     margin-right: 10px;
@@ -77,4 +84,33 @@
 
 .applicant-details button:hover {
     background-color: #555;
+}
+
+/* src/ApplicantsPage.css */
+
+.arrow-button {
+    position: absolute;
+    top: 20px; /* Adjust as needed */
+    left: 20px; /* Adjust as needed */
+    width: 30px; /* Reduce width */
+    height: 30px; /* Reduce height */
+    border: 2px solid black; /* Darker border */
+    border-radius: 8px; /* Rounded corners */
+    background-color: white; /* Button background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-align: center;
+}
+
+.arrow-button:hover {
+    background-color: black; /* Background color on hover */
+    color: white; /* Text color on hover */
+}
+
+.arrow-button svg {
+    width: 20px; /* Adjust arrow size */
+    height: 20px; /* Adjust arrow size */
+    fill: black; /* Arrow color */
 }

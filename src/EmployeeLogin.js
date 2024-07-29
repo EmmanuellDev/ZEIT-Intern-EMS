@@ -30,8 +30,13 @@ const EmployeeLogin = () => {
         }
     };
 
+    const handleBack = () => {
+        navigate('/'); // Navigate to homepage
+    };
+
     return (
         <div className="page-container">
+            <button className="back-button" onClick={handleBack}>⬅️</button>
             <div className="employee-login-container">
                 <h1>Employee Login</h1>
                 <form onSubmit={handleSubmit} className="employee-login-form">

@@ -130,7 +130,10 @@ const ContactPage = () => {
             </form>
             <div className="additional-text">
                 <p>Want to see your competitors & the current status of your Application❔</p>
-                <button onClick={() => navigate('/applicants')} className="click-here-button">Click here ➡️</button>
+                <button onClick={() => navigate('/applicants', { state: { fromAdminDashboard: false } })} className="click-here-button">
+    Click here ➡️
+</button>
+
             </div>
         </div>
     );

@@ -93,3 +93,28 @@ button:hover {
     color: black; /* Black text on hover */
     border: 1px solid black; /* Black border on hover */
 }
+
+/* Arrow button styling */
+.arrow-button {
+    position: fixed; /* Fixed positioning to ensure visibility */
+    top: 20px; /* Adjust position as needed */
+    right: 20px; /* Adjust position as needed */
+    width: 40px; /* Size of the button */
+    height: 40px; /* Size of the button */
+    background-color: black; /* Background color */
+    color: white; /* Text color */
+    border: 1px solid black; /* Border color */
+    border-radius: 50%; /* Rounded corners */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px; /* Size of the arrow */
+    cursor: pointer;
+    z-index: 1000; /* Ensure it's on top */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.arrow-button:hover {
+    background-color: white; /* Hover background color */
+    color: black; /* Hover text color */
+}

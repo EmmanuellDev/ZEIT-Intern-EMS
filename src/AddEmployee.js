@@ -1,6 +1,5 @@
-// src/AddEmployee.js
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from './firebase';
 import './AddEmployee.css';
@@ -54,90 +53,97 @@ const AddEmployee = () => {
 
     return (
         <div className="add-employee-container">
-            <h1>Add New Employee</h1>
+            <div className="header-container">
+                <h1>Add New Employee</h1>
+                <Link to="/admin-dashboard" className="back-arrow-button">
+                &#8592;
+                </Link>
+            </div>
             <form onSubmit={handleSubmit} className="employee-form">
-                <table>
-                    <tbody>
-                        <tr>
-                            <td><label htmlFor="name">Name:</label></td>
-                            <td><input
-                                type="text"
-                                id="name"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                                required
-                            /></td>
-                        </tr>
-                        <tr>
-                            <td><label htmlFor="email">Email:</label></td>
-                            <td><input
-                                type="email"
-                                id="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                required
-                            /></td>
-                        </tr>
-                        <tr>
-                            <td><label htmlFor="password">Password:</label></td>
-                            <td><input
-                                type="password"
-                                id="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                required
-                            /></td>
-                        </tr>
-                        <tr>
-                            <td><label htmlFor="jobId">Job ID:</label></td>
-                            <td><input
-                                type="text"
-                                id="jobId"
-                                value={jobId}
-                                onChange={(e) => setJobId(e.target.value)}
-                                required
-                            /></td>
-                        </tr>
-                        <tr>
-                            <td><label htmlFor="jobRole">Job Role:</label></td>
-                            <td><input
-                                type="text"
-                                id="jobRole"
-                                value={jobRole}
-                                onChange={(e) => setJobRole(e.target.value)}
-                                required
-                            /></td>
-                        </tr>
-                        <tr>
-                            <td><label htmlFor="phoneNumber">Phone Number:</label></td>
-                            <td><input
-                                type="text"
-                                id="phoneNumber"
-                                value={phoneNumber}
-                                onChange={(e) => setPhoneNumber(e.target.value)}
-                                required
-                            /></td>
-                        </tr>
-                        <tr>
-                            <td><label htmlFor="address">Address:</label></td>
-                            <td><input
-                                type="text"
-                                id="address"
-                                value={address}
-                                onChange={(e) => setAddress(e.target.value)}
-                                required
-                            /></td>
-                        </tr>
-                        <tr>
-                            <td><label htmlFor="photo">Photo:</label></td>
-                            <td><input
-                                type="file"
-                                id="photo"
-                                onChange={handlePhotoChange}
-                            /></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div className="table-container">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th>Name</th>
+                                <td><input
+                                    type="text"
+                                    id="name"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                    required
+                                /></td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td><input
+                                    type="email"
+                                    id="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    required
+                                /></td>
+                            </tr>
+                            <tr>
+                                <th>Password</th>
+                                <td><input
+                                    type="password"
+                                    id="password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    required
+                                /></td>
+                            </tr>
+                            <tr>
+                                <th>Job ID</th>
+                                <td><input
+                                    type="text"
+                                    id="jobId"
+                                    value={jobId}
+                                    onChange={(e) => setJobId(e.target.value)}
+                                    required
+                                /></td>
+                            </tr>
+                            <tr>
+                                <th>Job Role</th>
+                                <td><input
+                                    type="text"
+                                    id="jobRole"
+                                    value={jobRole}
+                                    onChange={(e) => setJobRole(e.target.value)}
+                                    required
+                                /></td>
+                            </tr>
+                            <tr>
+                                <th>Phone Number</th>
+                                <td><input
+                                    type="text"
+                                    id="phoneNumber"
+                                    value={phoneNumber}
+                                    onChange={(e) => setPhoneNumber(e.target.value)}
+                                    required
+                                /></td>
+                            </tr>
+                            <tr>
+                                <th>Address</th>
+                                <td><input
+                                    type="text"
+                                    id="address"
+                                    value={address}
+                                    onChange={(e) => setAddress(e.target.value)}
+                                    required
+                                /></td>
+                            </tr>
+                            <tr>
+                                <th>Photo</th>
+                                <td><input
+                                    type="file"
+                                    id="photo"
+                                    onChange={handlePhotoChange}
+                                /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <button type="submit" className="submit-button">Add Employee</button>
             </form>
         </div>

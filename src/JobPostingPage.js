@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { db } from './firebase';
 import { collection, addDoc } from 'firebase/firestore';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 import './JobPostingPage.css';
 
 const JobPostingPage = () => {
@@ -10,7 +10,7 @@ const JobPostingPage = () => {
   const [jobDescription, setJobDescription] = useState('');
   const [jobSalary, setJobSalary] = useState('');
   const [jobVacancies, setJobVacancies] = useState('');
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,11 +37,14 @@ const JobPostingPage = () => {
   };
 
   const handleGoClick = () => {
-    navigate('/job-delete'); // Redirect to job-delete page
+    navigate('/job-delete');
   };
 
   return (
     <div className="page-wrapper">
+      <div className="arrow-button" onClick={() => navigate('/admin-dashboard')}>
+        &larr;
+      </div>
       <div className="job-posting-container">
         <h1>POST A NEW JOB</h1>
         <form onSubmit={handleSubmit}>
@@ -111,3 +114,4 @@ const JobPostingPage = () => {
 };
 
 export default JobPostingPage;
+

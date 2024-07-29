@@ -10,6 +10,7 @@ html, body {
     justify-content: center; /* Center content vertically */
     height: 100vh;
     padding: 0 20px;
+    position: relative; /* To position the arrow button absolutely */
 }
 
 .job-delete-container {
@@ -69,4 +70,12 @@ button:hover {
     margin-top: 15px;
     font-size: 16px;
     color: green; /* You can adjust color based on status */
+}
+
+.arrow-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    cursor: pointer;
 }

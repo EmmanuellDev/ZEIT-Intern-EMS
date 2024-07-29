@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { db } from './firebase';
 import { collection, getDocs, deleteDoc, doc } from 'firebase/firestore';
 import './JobDeletePage.css';
+import { useNavigate } from 'react-router-dom';
 
 const JobDeletePage = () => {
   const [jobs, setJobs] = useState([]);
   const [selectedJob, setSelectedJob] = useState('');
   const [deleteStatus, setDeleteStatus] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchJobs = async () => {
@@ -39,26 +41,35 @@ const JobDeletePage = () => {
     }
   };
 
+  const handleArrowClick = () => {
+    navigate('/'); // Redirect to job-post page
+  };
+
   return (
-    <div className="job-delete-container">
-      <h1>DELETE A JOB POST</h1>
-      <div className="form-group">
-        <label htmlFor="jobSelect">Select Job to Delete</label>
-        <select
-          id="jobSelect"
-          value={selectedJob}
-          onChange={(e) => setSelectedJob(e.target.value)}
-        >
-          <option value="" disabled>Select a job</option>
-          {jobs.map(job => (
-            <option key={job.id} value={job.id}>
-              {job.jobName} - {job.jobLocation}
-            </option>
-          ))}
-        </select>
+    <div className="page-wrapper">
+      <div className="arrow-button" onClick={handleArrowClick}>
+        &#8592;
       </div>
-      <button onClick={handleDelete}>Delete Job</button>
-      {deleteStatus && <p className="status-message">{deleteStatus}</p>}
+      <div className="job-delete-container">
+        <h1>DELETE A JOB POST</h1>
+        <div className="form-group">
+          <label htmlFor="jobSelect">Select Job to Delete</label>
+          <select
+            id="jobSelect"
+            value={selectedJob}
+            onChange={(e) => setSelectedJob(e.target.value)}
+          >
+            <option value="" disabled>Select a job</option>
+            {jobs.map(job => (
+              <option key={job.id} value={job.id}>
+                {job.jobName} - {job.jobLocation}
+              </option>
+            ))}
+          </select>
+        </div>
+        <button onClick={handleDelete}>Delete Job</button>
+        {deleteStatus && <p className="status-message">{deleteStatus}</p>}
+      </div>
     </div>
   );
 };

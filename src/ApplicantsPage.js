@@ -1,15 +1,25 @@
+// src/ApplicantsPage.js
+
 import React, { useState, useEffect } from 'react';
 import { db } from './firebase';
 import { collection, getDocs, doc, updateDoc } from 'firebase/firestore';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './ApplicantsPage.css';
 
-const ApplicantsPage = ({ isAdmin }) => {
+const ApplicantsPage = () => {
     const [applicants, setApplicants] = useState([]);
     const [selectedApplicantId, setSelectedApplicantId] = useState(null);
     const [status, setStatus] = useState('');
-    const [editingStatusId, setEditingStatusId] = useState(null);
+    const [isAdmin, setIsAdmin] = useState(false);
+    const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
+        const isFromAdminDashboard = location.state?.fromAdminDashboard || false;
+        setIsAdmin(isFromAdminDashboard);
+
         const fetchApplicants = async () => {
             const querySnapshot = await getDocs(collection(db, 'applications'));
             const applicantsData = querySnapshot.docs.map(doc => ({
@@ -20,7 +30,7 @@ const ApplicantsPage = ({ isAdmin }) => {
         };
 
         fetchApplicants();
-    }, []);
+    }, [location.state]);
 
     const handleApplicantClick = (applicantId, currentStatus) => {
         if (selectedApplicantId === applicantId) {
@@ -32,16 +42,25 @@ const ApplicantsPage = ({ isAdmin }) => {
     };
 
     const handleStatusChange = async (applicantId) => {
-        const applicantDoc = doc(db, 'applications', applicantId);
-        await updateDoc(applicantDoc, { status });
-        setApplicants(applicants.map(applicant => 
-            applicant.id === applicantId ? { ...applicant, status } : applicant
-        ));
-        setEditingStatusId(null); // Exit edit mode
+        try {
+            const applicantDoc = doc(db, 'applications', applicantId);
+            await updateDoc(applicantDoc, { status });
+            setApplicants(applicants.map(applicant => 
+                applicant.id === applicantId ? { ...applicant, status } : applicant
+            ));
+            toast.success("Status Updated Successfully");
+        } catch (error) {
+            console.error("Error updating status: ", error);
+            toast.error("Error updating status");
+        }
     };
 
     return (
         <div className="applicants-page-container">
+            <ToastContainer />
+            <div className="arrow-button" onClick={() => navigate('/')}>
+            &#8592;
+            </div>
             <h1>Applicants</h1>
             <div className="applicants-list">
                 {applicants.map((applicant) => (
@@ -91,27 +110,18 @@ const ApplicantsPage = ({ isAdmin }) => {
                                     <th>Status</th>
                                     <td>
                                         {isAdmin ? (
-                                            editingStatusId === applicant.id ? (
-                                                <div>
-                                                    <select value={status} onChange={(e) => setStatus(e.target.value)}>
-                                                        <option value="in-progress">In-progress</option>
-                                                        <option value="accepted">Accepted</option>
-                                                        <option value="rejected">Rejected</option>
-                                                    </select>
-                                                    <button onClick={() => handleStatusChange(applicant.id)}>
-                                                        Update Status
-                                                    </button>
-                                                </div>
-                                            ) : (
-                                                <div>
-                                                    {applicant.status || 'in-progress'}
-                                                    <button onClick={() => setEditingStatusId(applicant.id)}>
-                                                        Edit
-                                                    </button>
-                                                </div>
-                                            )
+                                            <div className="status-edit-container">
+                                                <select value={status} onChange={(e) => setStatus(e.target.value)}>
+                                                    <option value="in-progress">In-progress</option>
+                                                    <option value="accepted">Accepted</option>
+                                                    <option value="rejected">Rejected</option>
+                                                </select>
+                                                <button onClick={() => handleStatusChange(applicant.id)}>
+                                                    Update Status
+                                                </button>
+                                            </div>
                                         ) : (
-                                            applicant.status || 'in-progress'
+                                            <span>{status}</span>
                                         )}
                                     </td>
                                 </tr>

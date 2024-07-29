@@ -1,17 +1,24 @@
-/* src/AddEmployee.css */
 .add-employee-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    background-color: #f4f4f4;
+    background-color: #f9f9f9;
     height: 100vh;
     font-family: Arial, sans-serif;
 }
 
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 600px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
 h1 {
     color: #333;
-    margin-bottom: 20px;
 }
 
 .employee-form {
@@ -19,38 +26,85 @@ h1 {
     flex-direction: column;
     width: 100%;
     max-width: 600px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table-container {
+    overflow-x: auto;
+    margin-top: 20px;
+    width: 100%;
 }
 
 table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 0 auto;
 }
 
-td {
-    padding: 10px;
-    border: 1px solid #ddd;
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f4f4f4;
+    color: #333;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+tr:hover {
+    background-color: #f0f0f0;
 }
 
 input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
+    width: calc(100% - 24px); /* Reduced width for a tighter input field */
+    padding: 10px;
+    border: 1px solid #bbb; /* Darker border */
     border-radius: 4px;
+    margin-top: 5px;
+    box-sizing: border-box; /* Ensure padding is included in width */
 }
 
 .submit-button {
     padding: 10px 20px;
     font-size: 1em;
-    color: white; /* button-text */
-    background-color: black; /* button-background */
-    border: 1px solid black; /* button-border */
+    color: white; /* Button text */
+    background-color: black; /* Button background */
+    border: 1px solid black; /* Button border */
     border-radius: 5px;
     cursor: pointer;
     margin-top: 20px;
 }
 
 .submit-button:hover {
-    color: black; /* button-text on hover */
-    background-color: white; /* button-background on hover */
-    border: 1px solid black; /* button-border on hover */
+    color: black; /* Button text on hover */
+    background-color: white; /* Button background on hover */
+    border: 1px solid black; /* Button border on hover */
+}
+
+.back-arrow-button {
+    font-size: 24px;
+    text-decoration: none;
+    color: black;
+    background: none;
+    border: 2px solid black;
+    cursor: pointer;
+    padding: 5px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    text-align: center;
 }

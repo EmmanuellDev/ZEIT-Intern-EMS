@@ -53,7 +53,7 @@ const AdminDashboard = () => {
                 <Link to="/add-employee">
                     <button className="action-button">Add New Employee</button>
                 </Link>
-                <Link to="/applicants">
+                <Link to="/applicants" state={{ fromAdminDashboard: true }}>
                     <button className="action-button">Update Applicants</button>
                 </Link>
             </div>
@@ -123,6 +123,9 @@ const AdminDashboard = () => {
                 <p>New Jobs Available❔, Post it here</p>
                 <Link to="/post-job">
                     <button className="new-job-button">Click here ➡️</button>
+                </Link>
+                <Link to="/admin-login">
+                    <button className="new-job-button-one">Back</button>
                 </Link>
             </div>
         </div>

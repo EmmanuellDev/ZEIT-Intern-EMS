@@ -1,3 +1,30 @@
+.page-container {
+    position: relative; /* Required for positioning back-button absolutely */
+    min-height: 100vh; /* Ensure container takes up at least the full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Push the quote-container to the bottom */
+    padding: 20px; /* Add padding if necessary */
+}
+
+.back-button {
+    position: fixed; /* Fix the button to the screen */
+    top: 10px;
+    left: 10px;
+    width: 40px; /* Small width */
+    height: 40px; /* Small height */
+    font-size: 24px; /* Font size for the icon */
+    border: 1px solid #000; /* Border color */
+    border-radius: 0; /* Square borders */
+    background: none;
+    cursor: pointer;
+    display: flex; /* Use flexbox for centering */
+    align-items: center; /* Vertically center the icon */
+    justify-content: center; /* Horizontally center the icon */
+    text-align: center; /* Center text horizontally */
+    line-height: 1; /* Ensure icon is centered vertically */
+}
+
 .admin-login-container {
     max-width: 600px; /* Increase max-width to 600px for a larger frame */
     margin: 50px auto; /* Center the container horizontally */
@@ -54,14 +81,6 @@
     color: #000000;
     background-color: #ffffff; /* Match the Home Page button hover color */
     border: #000000;
-}
-
-.page-container {
-    position: relative; /* Required for positioning quote-container absolutely */
-    min-height: 100vh; /* Ensure container takes up at least the full viewport height */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Push the quote-container to the bottom */
 }
 
 .quote-container {
