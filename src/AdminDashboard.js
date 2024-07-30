@@ -112,12 +112,6 @@ const AdminDashboard = () => {
                                 <td>Address:</td>
                                 <td>{selectedEmployee.address}</td>
                             </tr>
-                            <tr>
-                                <td>Photo:</td>
-                                <td>
-                                    {selectedEmployee.photo && <img src={selectedEmployee.photo} alt="Employee" className="employee-photo" />}
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
                     <div className="employee-actions">
