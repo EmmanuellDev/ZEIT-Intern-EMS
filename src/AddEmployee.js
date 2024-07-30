@@ -133,14 +133,6 @@ const AddEmployee = () => {
                                     required
                                 /></td>
                             </tr>
-                            <tr>
-                                <th>Photo</th>
-                                <td><input
-                                    type="file"
-                                    id="photo"
-                                    onChange={handlePhotoChange}
-                                /></td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
